@@ -24,19 +24,14 @@ function ZapolnKletok(){
           imyaid = '#'+indcol+indstr;
           currcell = document.querySelector(imyaid);
           chislo = mascards[vCol][vRow];
-          currcell.style.background="aliceblue";
-          currcell.innerHTML = '';
           if ( chislo>0  ) {
             currcell.innerHTML = String(chislo);
-            currcell.style.background="yellow";
+            //console.log( chislo );
           }
         }       //  for
     }       //  for
-    etap = 0;
-    infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
+    
 }   //  ZapolnKletok
-
-infoline = document.querySelector('.infoline');
 
 
 //      ЗАПОЛНЕНИЕ
@@ -82,10 +77,14 @@ function TaKolonka(cellIZ, cellTO){
 }
 
 
+infoline = document.querySelector('.infoline');
+infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
+
+
 //console.log('hanoi 2');
 
     //  STAKAN
-const stakan = document.querySelector('#pole');
+stakan = document.querySelector('#pole');
 //stakan.onclick = alert('Yes');
 
 // ********************  Действия по клику
@@ -97,7 +96,7 @@ stakan.onclick = function(event) {
     //
     if ( etap === 0 ) {
         //  if not empty
-        if (currcell.innerHTML!=='') {
+        if (currcell.innerHTML!==0) {
             if (isverhcell(imyaid) ) {
               currcell.style.background="#AFA";
               etap = 1;
@@ -139,12 +138,7 @@ stakan.onclick = function(event) {
     }
 };  //  stakan.onclick
 
-//console.log ('a'.charCodeAt(0));
+console.log ('a'.charCodeAt(0));
 
-const snova = document.querySelector('.btn_snova');
-snova.onclick = function(event) {
-    console.log ('snova');
-    ZapolnKletok();
-}
 
 
