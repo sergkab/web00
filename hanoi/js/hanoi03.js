@@ -108,35 +108,56 @@ stakan.onclick = function(event) {
         }
     }   //  if ( etap === 0
     else if ( etap == 1 ) {
-        
-        //  if empty
+        let tempCell;
+        let znachNIZ = -1;
+        let znachIZ;
+        //  if empty and not the same column
         if ( ( currcell.innerHTML==='' ) & !TaKolonka(currcell, coorIZ ) ) {
             console.log(' empty');
-            let tempCell = LowerCell(currcell);
+            // проверим более нижнюю, если пустая, спустимся
+            
+            tempCell = LowerCell(currcell);
             if (tempCell !== null ) {
                 while (tempCell.innerHTML==='') {
                     currcell = tempCell;
                     tempCell = LowerCell(tempCell);
                     if ( tempCell === null ) break;
+                    znachNIZ = tempCell.innerHTML;
                     console.log(' lower ', currcell.attributes[1].value);
                 }
             }
-            console.log(' TO ', currcell.attributes[1].value);
-            currcell.style.background="yellow";
-            coorIZ.style.background="aliceblue";
-            currcell.innerHTML = coorIZ.innerHTML;
-            coorIZ.innerHTML = '';
-            etap = 0;
-            infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
+            
+                
         }
-        else { console.log('not empty'); }
+        else {
+            console.log('not empty'); 
+            tempCell = LowerCell(currcell);
+            if (tempCell !== null ) {
+                znachNIZ = tempCell.innerHTML;
+                znachIZ = coorIZ.innerHTML;
+                if ( +znachIZ > znachNIZ ) {
+                    console.log(' big on less');
+                    coorIZ.style.background="yellow";
+                }
+                else {
+                    //  ставим фишку
+                    currcell.style.background="yellow";
+                    currcell.innerHTML = coorIZ.innerHTML;
+                    coorIZ.innerHTML = '';
+                    coorIZ.style.background="aliceblue";
+                }
+            }
+            etap = 0;
+            console.log(' TO ', currcell.attributes[1].value);
+            infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
+        }   //  if empty and not the same column
         /*
         если клетка  пустая,
             спуститься до ближ пустой
             etap = 0;
         иначе  сообщ об ошибке
         */
-    }
+    }   //  if ( etap === 0
 };  //  stakan.onclick
 
 //console.log ('a'.charCodeAt(0));

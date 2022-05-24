@@ -9,13 +9,15 @@ html, body{
     margin:0 auto;
 }
 .wrapper{
-    width:350px;
+    width:520px;
     height:420px;
     margin: 40px auto auto 200px;
     position: relative;
     vertical-align: middle;
     z-index: 2;
+    display: flex;
 }
+
 .wrapper .cell{
     background-color: aliceblue;
     border: 1px solid #cfcfcf;
@@ -31,13 +33,50 @@ html, body{
 .wrapper .cell.victory{
     background-color: #e96e6e;
 }
+
 .stakan{
     height: 400px;
-    width: 300px;
+    width: 304px;
     display: flex;
     flex-wrap: wrap;
     border: 3px solid #BEBEBE;
+    margin-right: 6pt;
 }
+
+.stakan-right{
+    height: 400px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #BEBEBE;
+}
+
+.btn_snova{
+    text-align: center;
+    color: #fff;
+    background-color: lightgreen;
+    padding: 30px 0;
+    font-size: 28px;
+    width: 100%;
+    height: 102px;
+    display: block;
+    border: 2px solid #BEBEBE;
+    box-sizing: border-box;
+}
+
+.btn_snova:hover{
+    color: rgb(204, 118, 118);
+}
+
+.opisanie{
+    height: 302px;
+    border: 2px solid #BEBEBE;
+    text-align: center;
+    background-color: aliceblue;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .statistics{
     font-weight: bold;
     text-align: center;
@@ -104,38 +143,6 @@ html, body{
     display: none;
 }
 
-.btn_snova{
-    text-align: center;
-    color: #fff;
-    background-color: lightgreen;
-    padding: 30px 0;
-    font-size: 28px;
-    position: absolute;
-    width: 60%;
-    height: 104px;
-    top: 0px;
-    left: 310px;
-    display: block;
-    border: 3px solid #BEBEBE;
-    box-sizing: border-box;
-}
-
-.btn_snova:hover{
-    color: rgb(204, 118, 118);
-}
-
-.opisanie{
-    position: absolute;
-    width: 60%;
-    height: 302px;
-    top: 102px;
-    left: 310px;
-    border: 3px solid #BEBEBE;
-    text-align: center;
-    background-color: aliceblue;
-    padding: 20px;
-    box-sizing: border-box;
-}
 
 
 
