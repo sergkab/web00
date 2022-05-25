@@ -34,6 +34,7 @@ function ZapolnKletok(){
         }       //  for
     }       //  for
     etap = 0;
+    predupr('');
     cell_TO_may = false;
     infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
 }   //  ZapolnKletok
@@ -83,6 +84,19 @@ function TaKolonka(cellIZ, cellTO){
     return (colonIZ == colonTO);
 }
 
+//      FUNCTION 
+function predupr(flag){
+    let vcell;
+    vcell = document.querySelector('.predupr');
+    if ( flag =='red') {
+        vcell.style.backgroundColor='red';
+        vcell.style.color='white';
+    }
+    else{
+        vcell.style.backgroundColor='';
+        vcell.style.color='';
+    }
+}
 
 //console.log('hanoi 2');
 
@@ -103,6 +117,7 @@ stakan.onclick = function(event) {
             if (isverhcell(imyaid) ) {
               currcell.style.background="#AFA";
               etap = 1;
+              predupr('');
               coorIZ = currcell;
               //chisloIZ = currcell.innerHTML;
               infoline.innerHTML = 'Отметьте куда переместить';
@@ -139,6 +154,7 @@ stakan.onclick = function(event) {
             if ( +znachIZ > znachNIZ ) {
                 console.log(' big on less');
                 coorIZ.style.background="yellow";
+                predupr('red');
                 cell_TO_may = false;
                 etap = 0;
             }
@@ -146,6 +162,8 @@ stakan.onclick = function(event) {
                 cell_TO_may = true;
             }
         }
+        //  если та же ячейка
+        if (currcell.innerHTML==coorIZ.innerHTML) {cell_TO_may = false;};
         if ( cell_TO_may ) {
             //  ставим фишку
             currcell.style.background="yellow";
