@@ -4,6 +4,7 @@ let mascards = [[3,0,0,0],[0,0,0,0],[1,2,4,0]];   // [ [лев низ,,,лев �
 const letterscol = ['a','b','c'];
 let coorIZ = null;  //  клетка ОТКУДА
 let etap = 0;
+let cell_TO_may = false;
     //  global _____  }
 
 
@@ -33,6 +34,7 @@ function ZapolnKletok(){
         }       //  for
     }       //  for
     etap = 0;
+    cell_TO_may = false;
     infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
 }   //  ZapolnKletok
 
@@ -126,31 +128,35 @@ stakan.onclick = function(event) {
                     console.log(' lower ', currcell.attributes[1].value);
                 }
             }
-            
-                
+            console.log('if tempCell !== null ');
+            cell_TO_may = true;
         }
-        else {
-            console.log('not empty'); 
-            tempCell = LowerCell(currcell);
-            if (tempCell !== null ) {
-                znachNIZ = tempCell.innerHTML;
-                znachIZ = coorIZ.innerHTML;
-                if ( +znachIZ > znachNIZ ) {
-                    console.log(' big on less');
-                    coorIZ.style.background="yellow";
-                }
-                else {
-                    //  ставим фишку
-                    currcell.style.background="yellow";
-                    currcell.innerHTML = coorIZ.innerHTML;
-                    coorIZ.innerHTML = '';
-                    coorIZ.style.background="aliceblue";
-                }
+        //console.log('not empty'); 
+        tempCell = LowerCell(currcell);
+        if (tempCell !== null ) {
+            znachNIZ = tempCell.innerHTML;
+            znachIZ = coorIZ.innerHTML;
+            if ( +znachIZ > znachNIZ ) {
+                console.log(' big on less');
+                coorIZ.style.background="yellow";
+                cell_TO_may = false;
+                etap = 0;
             }
+            else {
+                cell_TO_may = true;
+            }
+        }
+        if ( cell_TO_may ) {
+            //  ставим фишку
+            currcell.style.background="yellow";
+            currcell.innerHTML = coorIZ.innerHTML;
+            coorIZ.innerHTML = '';
+            coorIZ.style.background="aliceblue";
+            cell_TO_may = false;
             etap = 0;
             console.log(' TO ', currcell.attributes[1].value);
             infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
-        }   //  if empty and not the same column
+        }
         /*
         если клетка  пустая,
             спуститься до ближ пустой
