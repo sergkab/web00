@@ -1,5 +1,5 @@
     //  GLOBAL {
-let mascards = [[3,0,0,0],[0,0,0,0],[1,2,4,0]];   // [ [лев низ,,,лев верх]... ]
+let mascards = [[3,0,0,0],[0,0,0,0],[4,2,1,0]];   // [ [лев низ,,,лев верх]... ]
 
 const letterscol = ['a','b','c'];
 let coorIZ = null;  //  клетка ОТКУДА
@@ -26,10 +26,14 @@ function ZapolnKletok(){
           currcell = document.querySelector(imyaid);
           chislo = mascards[vCol][vRow];
           currcell.style.background="aliceblue";
+          currcell.stolbec = vCol;
+          currcell.stroka = vRow;
+          currcell.strokas = indcol;
           currcell.innerHTML = '';
           if ( chislo>0  ) {
             currcell.innerHTML = String(chislo);
             currcell.style.background="yellow";
+            console.log( imyaid, currcell.stolbec, currcell.stroka, currcell.strokas );
           }
         }       //  for
     }       //  for
@@ -37,6 +41,8 @@ function ZapolnKletok(){
     predupr('');
     cell_TO_may = false;
     infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
+    let tempCell = document.querySelector('.victory')
+    tempCell.style.display='';
 }   //  ZapolnKletok
 
 infoline = document.querySelector('.infoline');
@@ -65,12 +71,11 @@ function isverhcell(imyaid){
 
 //      FUNCTION    пуста ли более нижняя от cell
 function LowerCell(cell){
-    let imyaid = cell.attributes[1].value;     //  attribute, например b2
-    let nrow = imyaid[1];
+    //let imyaid = cell.attributes[1].value;     //  attribute, например b2
+    let nrow = cell.stroka;
     if (+nrow<=0) return null;
     nrow--;
-    //let ncol = (imyaid[0].charCodeAt(0)-97);    //  номер ряда <- буква
-    loimyaid = '#'+imyaid[0]+nrow;
+    let loimyaid = '#'+cell.strokas+nrow;
     console.log(loimyaid);
     let lcurrcell = document.querySelector(loimyaid);
     return lcurrcell;
@@ -174,6 +179,12 @@ stakan.onclick = function(event) {
             etap = 0;
             console.log(' TO ', currcell.attributes[1].value);
             infoline.innerHTML = "Отметьте карту ( верхнюю в столбце ) ";
+            if ( currcell.stroka == 3 ) {
+                console.log('URA!');
+                tempCell = document.querySelector('.victory')
+                tempCell.style.display='block';
+                etap = 3;
+            }
         }
         /*
         если клетка  пустая,
