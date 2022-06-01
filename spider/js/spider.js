@@ -55,6 +55,14 @@ kolon.append(div1);
 div1.className = "card";
 div1.innerHTML = "B";
 
+
+//let proba1 = document.createElement('div'); 
+let proba1 = document.querySelector('.colon2');
+//proba1.style.position = 'absolute';
+proba1.innerHTML = '1-1';
+proba1.style.height = "100px";
+proba1.style.width = "40px";
+
 /*
 for ( let cnt = 0; cnt<9; cnt++) {
     let kolon = document.querySelector('#col'+cnt);
