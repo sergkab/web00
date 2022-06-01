@@ -10,6 +10,12 @@
     margin: 6px;
 }
 
+.colon2{
+    border: 1px solid green;
+    height: 200px;
+    margin: 6px;
+}
+
 .card{
     border: 1px solid lightblue;
     border-radius: 5px;
