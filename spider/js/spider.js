@@ -55,6 +55,23 @@ kolon.append(div1);
 div1.className = "card";
 div1.innerHTML = "B";
 
+function formirkart(){
+    let index_cart;
+    let tempstr;
+    let imyadiv;
+    let pole_2;
+    for ( index_cart=1; index_cart<4; index_cart++) {
+        tempstr = '#karta'+index_cart;
+        imyadiv = 'divk'+index_cart;
+        //let `${imyadiv}` = document.createElement('div');
+        pole_2 = document.querySelector('#pole2');
+        pole_2.append(`${imyadiv}`);
+        //`${imyadiv}`.className = "kart";
+        //`${imyadiv}`.innerHTML = "new";
+    }
+}
+
+//formirkart();
 
 //let proba1 = document.createElement('div'); 
 let proba1 = document.querySelector('.colon2');
