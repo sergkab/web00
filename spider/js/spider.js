@@ -14,6 +14,8 @@ let mascards = [[0,0,0,0,0,11],
     [0,0,0,0,94],
     [0,0,0,0,111]];   // [ [прав верх,,,прав низ]... ]
 
+let masobjk = ['0','','','','',''];
+
 let infoline = document.querySelector('#infoline');
 infoline.innerHTML = mascards[0][5];
 
@@ -60,18 +62,23 @@ function formirkart(){
     let tempstr;
     let imyadiv;
     let pole_2;
-    for ( index_cart=1; index_cart<4; index_cart++) {
-        tempstr = '#karta'+index_cart;
-        imyadiv = 'divk'+index_cart;
-        //let `${imyadiv}` = document.createElement('div');
+    let index_mul;
+    for ( index_cart=1; index_cart<6; index_cart++) {
+        //tempstr = '#karta'+index_cart;
+        //imyadiv = 'divk'+index_cart;
+        masobjk[index_cart] = document.createElement('div');
         pole_2 = document.querySelector('#pole2');
-        pole_2.append(`${imyadiv}`);
-        //`${imyadiv}`.className = "kart";
-        //`${imyadiv}`.innerHTML = "new";
+        pole_2.append(masobjk[index_cart]);
+        masobjk[index_cart].className = "karta";
+        masobjk[index_cart].innerHTML = "k"+index_cart;
+        index_mul = index_cart*3;
+        tempstr = `${index_mul}px`;
+        masobjk[index_cart].style.left = tempstr;
+        console.log(index_cart, tempstr);
     }
 }
 
-//formirkart();
+formirkart();
 
 //let proba1 = document.createElement('div'); 
 let proba1 = document.querySelector('.colon2');
