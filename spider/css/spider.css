@@ -1,5 +1,11 @@
+body{
+    position: relative;
+    padding: 10px;
+}
+
 .pole{
-    display: flex;
+    /*display: flex;*/
+    display: none;
     height: 500px;
     background-color: #CEFFCE;
 }
