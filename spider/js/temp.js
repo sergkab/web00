@@ -1,6 +1,6 @@
 
 let myvar = '2'
-let imya = `pole${myvar}`;
+let imya = `pole${myvar}`+'_';
 console.log(imya);
 
 /*
