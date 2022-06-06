@@ -38,7 +38,7 @@ function formirkart(){
     const smeschV = 5;
     const smeschVn = 200;
     const mnozX = 50;
-    const mnozY = 40;
+    const mnozY = 30;
     let smesch = '';
     let smeschX = 0;
     let smeschY = 0;
@@ -48,7 +48,7 @@ function formirkart(){
     let index_mul;
     let dobavka_X = 0;
     let dobavka_Y = 0;
-    for ( index_cart=1; index_cart<106; index_cart++) {
+    for ( index_cart=1; index_cart<105; index_cart++) {
         //tempstr = '#karta'+index_cart;
         //imyadiv = 'divk'+index_cart;
         masobjk[index_cart] = document.createElement('div');
@@ -63,7 +63,7 @@ function formirkart(){
         }
         else {
             dobavka_Y =  (((index_cart-25) % 5))*mnozY ;
-            dobavka_X = (Math.floor((index_cart-1)/5))*mnozX;
+            dobavka_X = (Math.floor((index_cart-25)/5+4))*mnozX;
         }
 
         
@@ -73,7 +73,7 @@ function formirkart(){
         // смещение по вертик
         smeschY = dobavka_Y;
         smesch = `${smeschV}`;
-        if (index_cart>55) {
+        if (index_cart>54) {
             smesch=`${smeschVn}`;
             smeschY += smeschVn;
         };
