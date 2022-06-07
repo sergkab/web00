@@ -57,19 +57,20 @@ function formirkart(){
         masobjk[index_cart].className = "karta";
         masobjk[index_cart].innerHTML = "k"+index_cart;
         //  расположение на столе
-        if (index_cart<26) {
+        if (index_cart<25) {
             dobavka_Y =  ((index_cart-1) % 6)*mnozY;
-            
+            dobavka_X = (Math.floor((index_cart-1)/6))*mnozX;
         }
         else {
             dobavka_Y =  (((index_cart-25) % 5))*mnozY ;
+            dobavka_X = (Math.floor((index_cart-1)/5))*mnozX;
         }
-        dobavka_X = (Math.floor((index_cart-1)/6))*mnozX;
+
         
         // смещение по гориз
         tempstr = `${dobavka_X}px`;
         masobjk[index_cart].style.left = tempstr;
-        //
+        // смещение по вертик
         smeschY = dobavka_Y;
         smesch = `${smeschV}`;
         if (index_cart>55) {
