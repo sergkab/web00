@@ -69,6 +69,7 @@ function formirkart(){
         mastj = Math.floor((mascards[ index_cart ])/100);
         nominal = mascards[ index_cart ] % 100;
         masobjk[index_cart].innerHTML = arrmast[ mastj ]+arrnominal[nominal];
+        if (mastj<1) {masobjk[index_cart].style.color = 'red'};
         //  расположение на столе
         if (index_cart<25) {
             dobavka_Y =  ((index_cart-1) % 6)*mnozY;
