@@ -44,10 +44,11 @@ function formirkart(){
     let tempstr;
     const smeschV = 5;
     const smeschVn = 200;
+    const smeschX = 300;
+    const smeschY0 = 300;
     const mnozX = 50;
     const mnozY = 30;
     let smesch = '';
-    let smeschX = 0;
     let smeschY = 0;
     let smeschXstr;
     let smeschYstr;
@@ -68,7 +69,7 @@ function formirkart(){
         //  Обозначение карты
         mastj = Math.floor((mascards[ index_cart ])/100);
         nominal = mascards[ index_cart ] % 100;
-        masobjk[index_cart].innerHTML = arrmast[ mastj ]+arrnominal[nominal];
+        masobjk[index_cart].innerHTML = arrnominal[nominal] + arrmast[ mastj ];
         if (mastj<1) {masobjk[index_cart].style.color = 'red'};
         //  расположение на столе
         if (index_cart<25) {
@@ -81,16 +82,19 @@ function formirkart(){
         }
 
         
-        // смещение по гориз
-        tempstr = `${dobavka_X}px`;
-        masobjk[index_cart].style.left = tempstr;
         // смещение по вертик
         smeschY = dobavka_Y;
         smesch = `${smeschV}`;
         if (index_cart>54) {
-            smesch=`${smeschVn}`;
-            smeschY += smeschVn;
+            //smesch=`${smeschVn}`;
+            //smeschY += smeschVn;
+            dobavka_X = ((index_cart-55) % 10)*50 + smeschX;
+            smeschY = (Math.floor(index_cart-55)/10)*20 + smeschY0;
         };
+        // смещение по гориз
+        smeschXstr = `${dobavka_X}px`;
+        masobjk[index_cart].style.left = smeschXstr;
+        // смещение по вертик
         smeschYstr = `${smeschY}`+"px";
         masobjk[index_cart].style.top = smeschYstr;
         //console.log(index_cart, tempstr, smeschY);
